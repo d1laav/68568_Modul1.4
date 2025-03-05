@@ -119,7 +119,16 @@ class PlantDetailFragment : Fragment() {
                 }
             }
 
-
+            composeView.apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                )
+                setContent {
+                    SunflowerTheme {
+                        PlantDetailDescription(plantDetailViewModel)
+                    }
+                }
+            }
         }
         setHasOptionsMenu(true)
 
