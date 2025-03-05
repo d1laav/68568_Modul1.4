@@ -16,6 +16,7 @@
 
 package com.google.samples.apps.sunflower.plantdetail
 
+import android.content.res.Configuration
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.compose.foundation.layout.Column
@@ -41,6 +42,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.theme.SunflowerTheme
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -66,14 +68,6 @@ private fun PlantWatering(wateringInterval: Int) {
             text = wateringIntervalText,
             modifier = centerWithPaddingModifier.padding(bottom = normalPadding)
         )
-    }
-}
-
-@Preview
-@Composable
-private fun PlantWateringPreview() {
-    MaterialTheme {
-        PlantWatering(7)
     }
 }
 
@@ -126,21 +120,44 @@ private fun PlantDescription(description: String) {
     )
 }
 
-
-@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun PlantDetailContentPreview() {
-    val plant = Plant("id", "Apple", "description", 3, 30, "")
-    MaterialTheme {
+private fun PlantDetailContentDarkPreview() {
+    val plant = Plant("id", "Apple", "HTML<br><br>description", 3, 30, "")
+    SunflowerTheme {
         PlantDetailContent(plant)
     }
 }
 
+@Preview
+@Composable
+private fun PlantDetailContentPreview() {
+    val plant = Plant("id", "Apple", "HTML<br><br>description", 3, 30, "")
+    SunflowerTheme {
+        PlantDetailContent(plant)
+    }
+}
+
+@Preview
+@Composable
+private fun PlantNamePreview() {
+    SunflowerTheme {
+        PlantName("Apple")
+    }
+}
+
+@Preview
+@Composable
+private fun PlantWateringPreview() {
+    SunflowerTheme {
+        PlantWatering(7)
+    }
+}
 
 @Preview
 @Composable
 private fun PlantDescriptionPreview() {
-    MaterialTheme {
+    SunflowerTheme {
         PlantDescription("HTML<br><br>description")
     }
 }
