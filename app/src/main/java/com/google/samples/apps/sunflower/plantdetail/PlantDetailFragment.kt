@@ -111,11 +111,11 @@ class PlantDetailFragment : Fragment() {
                 }
             }
 
-//            composeView.setContent {
-//                MaterialTheme {
-//                    PlantDetailDescription(plantDetailViewModel)
-//                }
-//            }
+            composeView.setContent {
+                MaterialTheme {
+                    PlantDetailDescription(plantDetailViewModel)
+                }
+            }
         }
         setHasOptionsMenu(true)
 
